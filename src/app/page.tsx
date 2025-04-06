@@ -15,8 +15,10 @@ interface Position {
 }
 
 interface NotificationSettings {
-  outOfRangeEnabled: boolean;
+  outOfRangeAlerts: boolean;
+  impermanentLossAlerts: boolean;
   outOfRangeThreshold: number;
+  impermanentLossThreshold: number;
   notificationFrequency: 'realtime' | 'hourly' | 'daily';
 }
 
@@ -76,17 +78,18 @@ const mockNotifications: Notification[] = [
   }
 ];
 
-const defaultSettings: NotificationSettings = {
-  outOfRangeEnabled: true,
+const mockNotificationSettings: NotificationSettings = {
+  outOfRangeAlerts: true,
+  impermanentLossAlerts: false,
   outOfRangeThreshold: 5,
+  impermanentLossThreshold: 10,
   notificationFrequency: 'realtime'
 };
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState<'positions' | 'notifications' | 'settings'>('positions');
-  const [settings, setSettings] = useState<NotificationSettings>(defaultSettings);
+  const [notificationSettings, setNotificationSettings] = useState(mockNotificationSettings);
   const [notifications, setNotifications] = useState<Notification[]>(mockNotifications);
-  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
 
   const isInRange = (position: Position) => {
     return position.currentTick >= position.tickLower && position.currentTick <= position.tickUpper;
@@ -98,11 +101,12 @@ export default function Home() {
     ));
   };
 
-  const frequencyOptions = [
-    { value: 'realtime', label: 'Real-time', description: 'Get notified immediately when positions go out of range' },
-    { value: 'hourly', label: 'Hourly', description: 'Get a summary of out-of-range positions every hour' },
-    { value: 'daily', label: 'Daily Digest', description: 'Get a daily summary of all your positions' }
-  ];
+  const handleFrequencyChange = (frequency: NotificationSettings['notificationFrequency']) => {
+    setNotificationSettings(prev => ({
+      ...prev,
+      notificationFrequency: frequency
+    }));
+  };
 
   return (
     <main className="min-h-screen p-3 md:p-6">
@@ -215,8 +219,11 @@ export default function Home() {
                   <label className="relative inline-flex items-center cursor-pointer">
                     <input
                       type="checkbox"
-                      checked={settings.outOfRangeEnabled}
-                      onChange={(e) => setSettings({...settings, outOfRangeEnabled: e.target.checked})}
+                      checked={notificationSettings.outOfRangeAlerts}
+                      onChange={(e) => setNotificationSettings(prev => ({
+                        ...prev,
+                        outOfRangeAlerts: e.target.checked
+                      }))}
                       className="sr-only peer"
                     />
                     <div className="w-10 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-blue-600"></div>
@@ -226,22 +233,21 @@ export default function Home() {
                 <div className="mt-4">
                   <h3 className="text-base font-medium text-black mb-2">Notification Frequency</h3>
                   <div className="space-y-2">
-                    {frequencyOptions.map((option) => (
+                    {(['realtime', 'hourly', 'daily'] as const).map((frequency) => (
                       <div 
-                        key={option.value}
-                        onClick={() => setSettings({...settings, notificationFrequency: option.value as NotificationSettings['notificationFrequency']})}
+                        key={frequency}
+                        onClick={() => handleFrequencyChange(frequency)}
                         className={`p-3 rounded-lg border cursor-pointer ${
-                          settings.notificationFrequency === option.value 
+                          notificationSettings.notificationFrequency === frequency 
                             ? 'border-blue-500 bg-blue-50' 
                             : 'border-gray-200 bg-gray-50 hover:bg-gray-100'
                         }`}
                       >
                         <div className="flex items-center justify-between">
                           <div>
-                            <p className="font-medium text-black text-sm">{option.label}</p>
-                            <p className="text-xs text-black mt-1">{option.description}</p>
+                            <p className="font-medium text-black text-sm">{frequency}</p>
                           </div>
-                          {settings.notificationFrequency === option.value && (
+                          {notificationSettings.notificationFrequency === frequency && (
                             <div className="h-5 w-5 rounded-full bg-blue-500 flex items-center justify-center">
                               <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 text-white" viewBox="0 0 20 20" fill="currentColor">
                                 <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />

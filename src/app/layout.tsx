@@ -15,7 +15,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   title: 'Aerodrome Position Monitor',
   description: 'Monitor your Aerodrome LP positions',
-  metadataBase: new URL('https://your-production-url.com'),
+  metadataBase: new URL('https://aerodrome-alerts.vercel.app'),
   openGraph: {
     title: 'Aerodrome Position Monitor',
     description: 'Monitor your Aerodrome LP positions',
@@ -23,9 +23,9 @@ export const metadata: Metadata = {
   },
   other: {
     'fc:frame': 'vNext',
-    'fc:frame:image': 'https://your-production-url.com/og-image.png',
+    'fc:frame:image': 'https://aerodrome-alerts.vercel.app/og-image.png',
     'fc:frame:button:1': 'View Positions',
-    'fc:frame:post_url': 'https://your-production-url.com',
+    'fc:frame:post_url': 'https://aerodrome-alerts.vercel.app',
   },
 };
 
