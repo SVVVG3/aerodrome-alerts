@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 
 export async function GET() {
-  const farcasterConfig = {
+  return NextResponse.json({
     version: 1,
     homeUrl: "https://aerodrome-alerts.vercel.app",
     iconUrl: "https://aerodrome-alerts.vercel.app/icon.png",
@@ -10,9 +10,7 @@ export async function GET() {
     splashBackgroundColor: "#000000",
     webhookUrl: "https://aerodrome-alerts.vercel.app/api/webhook",
     buttonTitle: "View Position"
-  }
-
-  return NextResponse.json(farcasterConfig, {
+  }, {
     headers: {
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*',
