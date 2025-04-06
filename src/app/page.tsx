@@ -77,6 +77,14 @@ export default async function Home() {
             </Link>
           </div>
         </div>
+        
+        <div className="p-6 bg-gray-50 rounded-lg">
+          <h2 className="text-2xl font-semibold mb-4">Not Signed In</h2>
+          <p className="mb-4">You're currently viewing the demo version of Aerodrome Alerts. Sign in to see your actual positions and set up alerts.</p>
+          <button className="bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700">
+            Sign In
+          </button>
+        </div>
       </div>
     </main>
   )
