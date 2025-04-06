@@ -20,34 +20,6 @@ const nextConfig: NextConfig = {
           },
         ],
       },
-      {
-        // Add specific headers for farcaster.json
-        source: '/farcaster.json',
-        headers: [
-          {
-            key: 'Content-Type',
-            value: 'application/json',
-          },
-          {
-            key: 'Access-Control-Allow-Origin',
-            value: '*',
-          },
-        ],
-      },
-      {
-        // Add specific headers for .well-known/farcaster.json
-        source: '/.well-known/farcaster.json',
-        headers: [
-          {
-            key: 'Content-Type',
-            value: 'application/json',
-          },
-          {
-            key: 'Access-Control-Allow-Origin',
-            value: '*',
-          },
-        ],
-      },
     ]
   },
   images: {
@@ -57,6 +29,15 @@ const nextConfig: NextConfig = {
         hostname: '**',
       },
     ],
+  },
+  // Add this section to serve the index.html file at the root
+  async rewrites() {
+    return [
+      {
+        source: '/',
+        destination: '/index.html',
+      },
+    ];
   },
 }
 
