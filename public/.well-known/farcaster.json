@@ -4,5 +4,7 @@
   "iconUrl": "https://aerodrome-alerts.vercel.app/icon.png",
   "imageUrl": "https://aerodrome-alerts.vercel.app/image.png",
   "splashImageUrl": "https://aerodrome-alerts.vercel.app/splash.png",
-  "webhookUrl": "https://aerodrome-alerts.vercel.app/api/webhook"
+  "splashBackgroundColor": "#000000",
+  "webhookUrl": "https://aerodrome-alerts.vercel.app/api/webhook",
+  "buttonTitle": "View Position"
 }
