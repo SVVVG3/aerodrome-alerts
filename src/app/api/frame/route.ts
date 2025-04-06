@@ -24,7 +24,7 @@ export async function POST(req: NextRequest) {
   }
 }
 
-export async function GET(req: NextRequest) {
+export async function GET() {
   // Handle GET requests (for metadata)
   return NextResponse.json({
     name: "Aerodrome Alerts",
@@ -51,7 +51,7 @@ export async function GET(req: NextRequest) {
   });
 }
 
-export async function OPTIONS(req: NextRequest) {
+export async function OPTIONS() {
   // Handle preflight requests
   return NextResponse.json({}, {
     headers: {
