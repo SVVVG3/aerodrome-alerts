@@ -51,6 +51,15 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  // Add this section to ensure .well-known is served correctly
+  async rewrites() {
+    return [
+      {
+        source: '/.well-known/farcaster.json',
+        destination: '/.well-known/farcaster.json',
+      },
+    ]
+  },
 }
 
 export default nextConfig
