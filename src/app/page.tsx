@@ -1,8 +1,8 @@
 import { headers } from 'next/headers'
 import { NextResponse } from 'next/server'
 
-export default function Home() {
-  const headersList = headers()
+export default async function Home() {
+  const headersList = await headers()
   const userAgent = headersList.get('user-agent') || ''
   
   // Check if the request is coming from Farcaster
