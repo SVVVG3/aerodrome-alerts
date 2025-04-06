@@ -4,7 +4,28 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
-        source: '/:path*',
+        source: '/.well-known/farcaster.json',
+        headers: [
+          {
+            key: 'Access-Control-Allow-Origin',
+            value: '*',
+          },
+          {
+            key: 'Access-Control-Allow-Methods',
+            value: 'GET, OPTIONS',
+          },
+          {
+            key: 'Access-Control-Allow-Headers',
+            value: 'Content-Type',
+          },
+          {
+            key: 'Content-Type',
+            value: 'application/json',
+          },
+        ],
+      },
+      {
+        source: '/api/:path*',
         headers: [
           {
             key: 'Access-Control-Allow-Origin',
@@ -29,15 +50,6 @@ const nextConfig: NextConfig = {
         hostname: '**',
       },
     ],
-  },
-  // Add this section to serve the index.html file at the root
-  async rewrites() {
-    return [
-      {
-        source: '/',
-        destination: '/index.html',
-      },
-    ];
   },
 }
 
