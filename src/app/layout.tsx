@@ -19,6 +19,12 @@ export const metadata: Metadata = {
     description: 'Track your Aerodrome positions and get alerts',
     images: ['/og-image.png'],
   },
+  other: {
+    'fc:frame': 'vNext',
+    'fc:frame:image': 'https://aerodrome-alerts.vercel.app/og-image.png',
+    'fc:frame:button:1': 'View Position',
+    'fc:frame:post_url': 'https://aerodrome-alerts.vercel.app/api/frame',
+  },
 }
 
 export const viewport: Viewport = {
@@ -35,6 +41,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <meta property="fc:frame" content="vNext" />
+        <meta property="fc:frame:image" content="https://aerodrome-alerts.vercel.app/og-image.png" />
+        <meta property="fc:frame:button:1" content="View Position" />
+        <meta property="fc:frame:post_url" content="https://aerodrome-alerts.vercel.app/api/frame" />
+      </head>
       <body className={inter.className}>{children}</body>
     </html>
   )
