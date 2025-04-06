@@ -1,12 +1,22 @@
 import type { Metadata, Viewport } from 'next'
+import { Inter } from 'next/font/google'
+import './globals.css'
+
+const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Position Details - Aerodrome Alerts',
-  description: 'View your Aerodrome position details and status',
-  metadataBase: new URL('https://aerodrome-alerts.vercel.app'),  // Add this line
+  title: 'Aerodrome Alerts',
+  description: 'Track your Aerodrome positions and get alerts',
+  metadataBase: new URL('https://aerodrome-alerts.vercel.app'),
   openGraph: {
-    title: 'Position Details - Aerodrome Alerts',
-    description: 'View your Aerodrome position details and status',
+    title: 'Aerodrome Alerts',
+    description: 'Track your Aerodrome positions and get alerts',
+    images: ['/og-image.png'],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Aerodrome Alerts',
+    description: 'Track your Aerodrome positions and get alerts',
     images: ['/og-image.png'],
   },
   other: {
@@ -24,10 +34,14 @@ export const viewport: Viewport = {
   userScalable: false,
 }
 
-export default function PositionLayout({
+export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
-  return children
+  return (
+    <html lang="en">
+      <body className={inter.className}>{children}</body>
+    </html>
+  )
 }
