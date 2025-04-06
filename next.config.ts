@@ -4,11 +4,11 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
-        source: '/farcaster.json',
+        source: '/.well-known/farcaster.json',
         headers: [
           {
             key: 'Access-Control-Allow-Origin',
-            value: '*',  // Changed from https://warpcast.com to *
+            value: '*',
           },
           {
             key: 'Access-Control-Allow-Methods',
