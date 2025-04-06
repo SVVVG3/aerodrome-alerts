@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
   title: 'Aerodrome Alerts',
   description: 'Track your Aerodrome positions and get alerts',
-  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3001'),
+  metadataBase: new URL('https://aerodrome-alerts.vercel.app'),
   openGraph: {
     title: 'Aerodrome Alerts',
     description: 'Track your Aerodrome positions and get alerts',
