@@ -1,37 +1,23 @@
-import { NextResponse } from 'next/server';
+import { NextResponse } from 'next/server'
 
 export async function GET() {
-  return NextResponse.json({
-    name: "Aerodrome Alerts",
-    description: "Track your Aerodrome positions and get alerts",
-    image: "https://aerodrome-alerts.vercel.app/og-image.png",
-    external_url: "https://aerodrome-alerts.vercel.app",
-    frame: {
-      image: "https://aerodrome-alerts.vercel.app/og-image.png",
-      buttons: [
-        {
-          label: "View Position",
-          action: "post"
-        }
-      ],
-      post_url: "https://aerodrome-alerts.vercel.app/api/frame"
-    }
-  }, {
+  const farcasterConfig = {
+    version: 1,
+    homeUrl: "https://aerodrome-alerts.vercel.app",
+    iconUrl: "https://aerodrome-alerts.vercel.app/icon.png",
+    imageUrl: "https://aerodrome-alerts.vercel.app/image.png",
+    splashImageUrl: "https://aerodrome-alerts.vercel.app/splash.png",
+    splashBackgroundColor: "#000000",
+    webhookUrl: "https://aerodrome-alerts.vercel.app/api/webhook",
+    buttonTitle: "View Position"
+  }
+
+  return NextResponse.json(farcasterConfig, {
     headers: {
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'GET, OPTIONS',
       'Access-Control-Allow-Headers': 'Content-Type',
     },
-  });
-}
-
-export async function OPTIONS() {
-  return NextResponse.json({}, {
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET, OPTIONS',
-      'Access-Control-Allow-Headers': 'Content-Type',
-    },
-  });
+  })
 }
