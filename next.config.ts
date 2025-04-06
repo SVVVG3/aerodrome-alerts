@@ -8,7 +8,7 @@ const nextConfig: NextConfig = {
         headers: [
           {
             key: 'Access-Control-Allow-Origin',
-            value: 'https://warpcast.com',
+            value: '*',  // Changed from https://warpcast.com to *
           },
           {
             key: 'Access-Control-Allow-Methods',
