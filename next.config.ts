@@ -30,10 +30,6 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  // Add this section
-  experimental: {
-    metadataBase: new URL('https://aerodrome-alerts.vercel.app'),
-  },
 }
 
 export default nextConfig
