@@ -1,37 +1,13 @@
-import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
+import { Metadata } from 'next'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Aerodrome Alerts',
-  description: 'Track your Aerodrome positions and get alerts',
+  description: 'Track your Aerodrome positions and get notified when they fall out of range',
   metadataBase: new URL('https://aerodrome-alerts.vercel.app'),
-  openGraph: {
-    title: 'Aerodrome Alerts',
-    description: 'Track your Aerodrome positions and get alerts',
-    images: ['/og-image.png'],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Aerodrome Alerts',
-    description: 'Track your Aerodrome positions and get alerts',
-    images: ['/og-image.png'],
-  },
-  other: {
-    'fc:frame': 'vNext',
-    'fc:frame:image': 'https://aerodrome-alerts.vercel.app/og-image.png',
-    'fc:frame:button:1': 'View Position',
-    'fc:frame:post_url': 'https://aerodrome-alerts.vercel.app/api/frame',
-  },
-}
-
-export const viewport: Viewport = {
-  width: 'device-width',
-  initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
 }
 
 export default function RootLayout({
@@ -41,6 +17,19 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <script type="module">
+          {`
+            import { sdk } from 'https://esm.sh/@farcaster/frame-sdk'
+            
+            // Initialize the SDK
+            sdk.init({
+              appName: 'Aerodrome Alerts',
+              appIcon: 'https://aerodrome-alerts.vercel.app/icon.png',
+            })
+          `}
+        </script>
+      </head>
       <body className={inter.className}>{children}</body>
     </html>
   )
