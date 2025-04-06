@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server';
 
 export async function GET() {
-  // Return the Farcaster frame metadata
   return NextResponse.json({
     name: "Aerodrome Alerts",
     description: "Track your Aerodrome positions and get alerts",
@@ -28,7 +27,6 @@ export async function GET() {
 }
 
 export async function OPTIONS() {
-  // Handle preflight requests
   return NextResponse.json({}, {
     headers: {
       'Access-Control-Allow-Origin': '*',
