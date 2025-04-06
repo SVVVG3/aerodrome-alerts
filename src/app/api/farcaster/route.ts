@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-export async function GET(req: NextRequest) {
+export async function GET() {
   // Return the Farcaster frame metadata
   return NextResponse.json({
     name: "Aerodrome Alerts",
@@ -27,7 +27,7 @@ export async function GET(req: NextRequest) {
   });
 }
 
-export async function OPTIONS(req: NextRequest) {
+export async function OPTIONS() {
   // Handle preflight requests
   return NextResponse.json({}, {
     headers: {
