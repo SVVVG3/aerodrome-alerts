@@ -1,16 +1,16 @@
-   {
-     "name": "Aerodrome Alerts",
-     "description": "Track your Aerodrome positions and get alerts",
-     "image": "http://localhost:3001/og-image.png",
-     "external_url": "http://localhost:3001",
-     "frame": {
-       "image": "http://localhost:3001/og-image.png",
-       "buttons": [
-         {
-           "label": "View Position",
-           "action": "post"
-         }
-       ],
-       "post_url": "http://localhost:3001/api/frame"
-     }
-   }
+{
+  "name": "Aerodrome Alerts",
+  "description": "Track your Aerodrome positions and get alerts",
+  "image": "https://aerodrome-alerts.vercel.app/og-image.png",
+  "external_url": "https://aerodrome-alerts.vercel.app",
+  "frame": {
+    "image": "https://aerodrome-alerts.vercel.app/og-image.png",
+    "buttons": [
+      {
+        "label": "View Position",
+        "action": "post"
+      }
+    ],
+    "post_url": "https://aerodrome-alerts.vercel.app/api/frame"
+  }
+}
