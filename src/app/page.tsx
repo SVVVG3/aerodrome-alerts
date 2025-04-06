@@ -1,5 +1,22 @@
 import { headers } from 'next/headers'
 import { NextResponse } from 'next/server'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Aerodrome Alerts',
+  description: 'Track your Aerodrome positions and get alerts',
+  openGraph: {
+    title: 'Aerodrome Alerts',
+    description: 'Track your Aerodrome positions and get alerts',
+    images: ['/og-image.png'],
+  },
+  other: {
+    'fc:frame': 'vNext',
+    'fc:frame:image': 'https://aerodrome-alerts.vercel.app/og-image.png',
+    'fc:frame:button:1': 'View Position',
+    'fc:frame:post_url': 'https://aerodrome-alerts.vercel.app/api/frame',
+  },
+}
 
 export default async function Home() {
   const headersList = await headers()
