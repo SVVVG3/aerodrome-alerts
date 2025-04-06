@@ -3,6 +3,7 @@ import type { Metadata, Viewport } from 'next'
 export const metadata: Metadata = {
   title: 'Position Details - Aerodrome Alerts',
   description: 'View your Aerodrome position details and status',
+  metadataBase: new URL('https://aerodrome-alerts.vercel.app'),  // Add this line
   openGraph: {
     title: 'Position Details - Aerodrome Alerts',
     description: 'View your Aerodrome position details and status',
