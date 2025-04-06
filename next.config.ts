@@ -18,6 +18,10 @@ const nextConfig: NextConfig = {
             key: 'Access-Control-Allow-Headers',
             value: 'Content-Type',
           },
+          {
+            key: 'Content-Type',
+            value: 'application/json',
+          },
         ],
       },
     ]
