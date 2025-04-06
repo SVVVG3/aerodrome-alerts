@@ -25,7 +25,7 @@ export default function AlertsPage() {
 
         {isSubscribed ? (
           <div className="p-4 bg-green-50 rounded-lg">
-            <p className="text-green-800">You've successfully subscribed to alerts!</p>
+            <p className="text-green-800">You&apos;ve successfully subscribed to alerts!</p>
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="space-y-4">
