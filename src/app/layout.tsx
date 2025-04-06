@@ -1,22 +1,11 @@
 import type { Metadata, Viewport } from 'next'
-import { Inter } from 'next/font/google'
-import './globals.css'
-
-const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Aerodrome Alerts',
-  description: 'Track your Aerodrome positions and get alerts',
-  metadataBase: new URL('https://aerodrome-alerts.vercel.app'),
+  title: 'Position Details - Aerodrome Alerts',
+  description: 'View your Aerodrome position details and status',
   openGraph: {
-    title: 'Aerodrome Alerts',
-    description: 'Track your Aerodrome positions and get alerts',
-    images: ['/og-image.png'],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Aerodrome Alerts',
-    description: 'Track your Aerodrome positions and get alerts',
+    title: 'Position Details - Aerodrome Alerts',
+    description: 'View your Aerodrome position details and status',
     images: ['/og-image.png'],
   },
   other: {
@@ -34,20 +23,10 @@ export const viewport: Viewport = {
   userScalable: false,
 }
 
-export default function RootLayout({
+export default function PositionLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
-  return (
-    <html lang="en">
-      <head>
-        <meta property="fc:frame" content="vNext" />
-        <meta property="fc:frame:image" content="https://aerodrome-alerts.vercel.app/og-image.png" />
-        <meta property="fc:frame:button:1" content="View Position" />
-        <meta property="fc:frame:post_url" content="https://aerodrome-alerts.vercel.app/api/frame" />
-      </head>
-      <body className={inter.className}>{children}</body>
-    </html>
-  )
+  return children
 }
