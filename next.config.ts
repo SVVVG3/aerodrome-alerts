@@ -4,7 +4,7 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
-        source: '/.well-known/farcaster.json',
+        source: '/farcaster.json',
         headers: [
           {
             key: 'Access-Control-Allow-Origin',
