@@ -1,6 +1,7 @@
 import { headers } from 'next/headers'
 import { NextResponse } from 'next/server'
 import type { Metadata } from 'next'
+import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'Aerodrome Alerts',
@@ -55,7 +56,28 @@ export default async function Home() {
   // Regular page content for non-Farcaster requests
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      {/* Your existing page content */}
+      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm">
+        <h1 className="text-4xl font-bold mb-8">Aerodrome Alerts</h1>
+        <p className="text-xl mb-8">Track your Aerodrome positions and get alerts</p>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+          <div className="p-6 bg-white rounded-lg shadow-md">
+            <h2 className="text-2xl font-semibold mb-4">Your Positions</h2>
+            <p className="mb-4">View and monitor your Aerodrome LP positions</p>
+            <Link href="/position/0x..." className="text-blue-600 hover:underline">
+              View Positions →
+            </Link>
+          </div>
+          
+          <div className="p-6 bg-white rounded-lg shadow-md">
+            <h2 className="text-2xl font-semibold mb-4">Get Alerts</h2>
+            <p className="mb-4">Set up alerts for your positions</p>
+            <Link href="/alerts" className="text-blue-600 hover:underline">
+              Configure Alerts →
+            </Link>
+          </div>
+        </div>
+      </div>
     </main>
   )
 }
